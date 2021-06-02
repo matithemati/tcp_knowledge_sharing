@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tcp_knowledge_sharing/components/buildAppBar.component.dart';
 
+import 'loggedIn.screen.dart';
+
 class EmailAndPasswordScreen extends StatefulWidget {
   @override
   _EmailAndPasswordScreenState createState() => _EmailAndPasswordScreenState();
@@ -72,32 +74,40 @@ class _EmailAndPasswordScreenState extends State<EmailAndPasswordScreen> {
                 onTap: () {
                   print(username);
                 },
-                child: Container(
-                  padding: EdgeInsets.only(top: 10, bottom: 10),
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    border: Border.all(
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (context) => LoggedInScreen()),
+                      (Route<dynamic> route) => false,
+                    );
+                  },
+                  child: Container(
+                    padding: EdgeInsets.only(top: 10, bottom: 10),
+                    decoration: BoxDecoration(
                       color: Colors.black,
-                      width: 1,
-                      style: BorderStyle.solid,
+                      border: Border.all(
+                        color: Colors.black,
+                        width: 1,
+                        style: BorderStyle.solid,
+                      ),
+                      borderRadius: BorderRadius.circular(5),
                     ),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  width: MediaQuery.of(context).size.width * 0.3,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Log in",
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
-                      ),
-                      Icon(
-                        Icons.login,
-                        color: Colors.white,
-                      ),
-                    ],
+                    width: MediaQuery.of(context).size.width * 0.3,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Log in",
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        ),
+                        Icon(
+                          Icons.login,
+                          color: Colors.white,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               )

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tcp_knowledge_sharing/screens/loading.screen.dart';
 import 'package:tcp_knowledge_sharing/screens/loginSelect.screen.dart';
 
 void main() {
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoadingScreen()
+      home: LoginSelectScreen()
     );
   }
 }
