@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tcp_knowledge_sharing/components/SignInButton.component.dart';
 import 'package:tcp_knowledge_sharing/components/buildAppBar.component.dart';
 import 'package:tcp_knowledge_sharing/screens/emailAndPassword.screen.dart';
+import 'package:tcp_knowledge_sharing/screens/loggedIn.screen.dart';
 import 'package:tcp_knowledge_sharing/screens/register.screen.dart';
 
 class LoginSelectScreen extends StatelessWidget {
@@ -46,7 +47,12 @@ class LoginSelectScreen extends StatelessWidget {
                   imageUrl: "assets/anonymous.svg",
                   text: "Sign in anonymously",
                   onTap: () {
-                    print("123");
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(
+                        builder: (context) => LoggedInScreen(),
+                      ),
+                      (Route<dynamic> route) => false,
+                    );
                   }),
               SizedBox(
                 height: 30,
