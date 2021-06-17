@@ -4,6 +4,7 @@ import 'package:tcp_knowledge_sharing/components/buildAppBar.component.dart';
 import 'package:tcp_knowledge_sharing/screens/emailAndPassword.screen.dart';
 import 'package:tcp_knowledge_sharing/screens/loggedIn.screen.dart';
 import 'package:tcp_knowledge_sharing/screens/register.screen.dart';
+import 'package:tcp_knowledge_sharing/services/auth.service.dart';
 
 class LoginSelectScreen extends StatelessWidget {
   const LoginSelectScreen({Key? key}) : super(key: key);
@@ -46,7 +47,8 @@ class LoginSelectScreen extends StatelessWidget {
               SignInButton(
                   imageUrl: "assets/anonymous.svg",
                   text: "Sign in anonymously",
-                  onTap: () {
+                  onTap: () async {
+                    await AuthService().anonymousSignIn();
                     Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(
                         builder: (context) => LoggedInScreen(),
@@ -60,8 +62,14 @@ class LoginSelectScreen extends StatelessWidget {
               SignInButton(
                   imageUrl: "assets/google-logo.svg",
                   text: "Sign in with Google",
-                  onTap: () {
-                    print("123");
+                  onTap: () async {
+                    await AuthService().signInWithGoogle();
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(
+                        builder: (context) => LoggedInScreen(),
+                      ),
+                      (Route<dynamic> route) => false,
+                    );
                   }),
             ],
           ),
